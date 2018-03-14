@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <header *ngIf="user && !user.isLoggedIn">
+    <div class="buttons">
+      <button (click)="login(1)">User 1</button>
+      <button (click)="login(3)">User 2</button>
+    </div>
+  </header>
+  <header *ngIf="user && user.isLoggedIn">
+    <h3>Current user: {{user.username}}</h3>
+    <button>Sign out</button>
+  </header>
+  <main *ngIf="user && user.isLoggedIn">
+    <app-gemstone-task *ngIf="user.pendingReservation" [task]="user.pendingReservation.task"></app-gemstone-task>
+  </main>
+</div>

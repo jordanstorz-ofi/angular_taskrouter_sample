@@ -1,0 +1,27 @@
+div.wrapper {
+    border: 2px solid gray;
+    height: 23rem;
+    width: 98%;
+    padding-left: 22px;
+}
+
+header {
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    padding: 22px;
+}
+
+header button {
+    margin-right: 12px;
+}
+
+h3 {
+    margin-bottom: 2rem;
+}

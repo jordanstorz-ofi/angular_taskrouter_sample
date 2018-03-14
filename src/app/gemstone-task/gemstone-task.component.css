@@ -1,0 +1,6 @@
+div.gemstone {
+    height: 4rem;
+    width: 4rem;
+    border: 12px solid silver;
+    transform: rotate(45deg)
+}
