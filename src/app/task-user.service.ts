@@ -51,13 +51,18 @@ export class TaskUserService {
       });
   }
 
+  logout(userSid: string) {
+    this.currentUser.isLoggedIn = false;
+    this._workerAction.exitWorker(userSid);
+  }
+
   activateSubscriptions() {
     this._workerEvents
       .workerReady_
       .subscribe(worker => {
         this.updateIsLoggedIn(true);
       });
-      
+
     this._workerEvents
       .reservationCreated_
       .subscribe(rsrv => {

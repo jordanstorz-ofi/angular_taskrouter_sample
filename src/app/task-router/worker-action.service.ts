@@ -21,11 +21,16 @@ export class WorkerActionService {
       exitActivitySid
     );
 
+    this._workerStore.upsertWorker(worker);
     this._workerEvents.initializeWorkerStreams(worker);
   }
 
   exitWorker(workerSid: string): void {
     const worker = this._workerStore.findWorkerBySid(workerSid);
+    console.log('worker for fetching reservations');
+    console.log(worker);
+    
+    
     worker.fetchReservations((error, response) => {
       const responseReservations = response.data;
       const activeReservation = 

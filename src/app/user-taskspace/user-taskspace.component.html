@@ -7,7 +7,7 @@
   </header>
   <header *ngIf="user && user.isLoggedIn">
     <h3>Current user: {{user.username}}</h3>
-    <button>Sign out</button>
+    <button (click)="logout()">Sign out</button>
   </header>
   <main *ngIf="user && user.isLoggedIn">
     <app-gemstone-task *ngIf="user.pendingReservation" [task]="user.pendingReservation.task"></app-gemstone-task>

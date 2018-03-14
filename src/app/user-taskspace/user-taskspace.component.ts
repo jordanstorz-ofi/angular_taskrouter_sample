@@ -24,4 +24,8 @@ export class UserTaskspaceComponent implements OnInit {
     this._taskUser.login(userId);
   }
 
+  logout(): void {
+    this._taskUser.logout(this.user.workerSid);
+  }
+
 }
