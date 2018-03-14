@@ -86,11 +86,12 @@ export class TaskUserService {
   }
 
   updateRejectedReservation(reservation: Reservation) {
-    const currentRes = this.currentUser.pendingReservation;
-    if (currentRes.reservationSid === reservation.reservationSid) {
-      this.currentUser.pendingReservation = <Reservation> {};
+    if (this.currentUser.isLoggedIn) {
+      const currentRes = this.currentUser.pendingReservation;
+      if (currentRes && currentRes.reservationSid === reservation.reservationSid) {
+        this.currentUser.pendingReservation = <Reservation> {};
+      }
+      this.updateUser_.next(this.currentUser);
     }
-    this.updateUser_.next(this.currentUser);
   }
-
 }

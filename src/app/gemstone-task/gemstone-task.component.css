@@ -1,6 +1,31 @@
+main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    width: 22rem;
+    padding-bottom: 12rem;
+}
+
+h4 {
+    margin-bottom: 3rem;
+}
+
 div.gemstone {
     height: 4rem;
     width: 4rem;
     border: 12px solid silver;
-    transform: rotate(45deg)
+    transform: rotate(45deg);
+}
+
+main input {
+    margin-top: 4rem;
+    height: 2rem;
+    font-size: 1.7rem;
+    width: 22%;
+}
+
+button.submit-price {
+    margin-top: 2rem;
 }

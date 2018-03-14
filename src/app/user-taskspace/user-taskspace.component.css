@@ -1,6 +1,6 @@
 div.wrapper {
     border: 2px solid gray;
-    height: 23rem;
+    height: 43rem;
     width: 98%;
     padding-left: 22px;
 }
@@ -9,13 +9,13 @@ header {
     box-sizing: border-box;
     padding-top: 1rem;
     padding-left: 0.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
 }
 
 main {
-    padding: 22px;
+    padding-left: 32px;
 }
 
 header button {
