@@ -110,4 +110,17 @@ export class TaskUserService {
   acceptReservation(workerSid: string) {
     this._workerAction.acceptCurrentReservation(workerSid);
   }
+
+  submitPrice(taskSid: string, gemstoneValue: number) {
+    console.log('attempting request')
+    const requestUrl = 'http://1620dbc2.ngrok.io/api/tasks';
+    const requestBody = {
+      TaskSid: taskSid,
+      GemstoneValue: gemstoneValue
+    };
+
+    this._http.post<any>(requestUrl, requestBody)
+      .subscribe(response => console.log(response));
+  }
 }
+

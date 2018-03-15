@@ -13,6 +13,7 @@
     <app-gemstone-task 
      *ngIf="user.pendingReservation" 
      [reservation]="user.pendingReservation"
-     (acceptReservation)="acceptReservation()"></app-gemstone-task>
+     (acceptReservation)="acceptReservation()"
+     (submitPrice)="submitPrice($event)"></app-gemstone-task>
   </main>
 </div>

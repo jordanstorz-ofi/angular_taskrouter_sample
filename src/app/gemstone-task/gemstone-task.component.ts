@@ -9,8 +9,14 @@ import { Reservation } from '../task-router/reservation';
 export class GemstoneTaskComponent implements OnInit {
 
   @Input() reservation: Reservation;
+
   @Output() acceptReservation: EventEmitter<Boolean> = 
     new EventEmitter<Boolean>();
+  
+  @Output() submitPrice: EventEmitter<[string,number]> =
+    new EventEmitter<[string,number]>();
+
+  gemstoneValue: number = 0;
 
   constructor() { }
 
@@ -19,6 +25,10 @@ export class GemstoneTaskComponent implements OnInit {
 
   emitAcceptReservation() {
     this.acceptReservation.emit(true);
+  }
+
+  emitSubmitPrice() {
+    this.submitPrice.emit([this.reservation.task.taskSid, this.gemstoneValue]);
   }
 
 }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { TaskRouterModule } from './task-router/task-router.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,6 +23,7 @@ import { WorkspaceTasksComponent } from './workspace-tasks/workspace-tasks.compo
   imports: [
     TaskRouterModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [

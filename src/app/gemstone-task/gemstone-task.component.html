@@ -3,6 +3,6 @@
   <div class="gemstone" id="hexagon"
   [style.background-color]="reservation.task.attributes.Diamond.HexColor">
   </div>
-  <input  (click)="emitAcceptReservation()" type="text">
-  <button class="submit-price">SUBMIT</button>
+  <input type="number" [(ngModel)]="gemstoneValue">
+  <button (click)="emitSubmitPrice()" class="submit-price">SUBMIT</button>
 </main>

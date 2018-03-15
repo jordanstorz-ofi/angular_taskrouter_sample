@@ -34,4 +34,9 @@ export class UserTaskspaceComponent implements OnInit {
     this._taskUser.acceptReservation(this.user.workerSid);
   }
 
+  submitPrice(details: [string,number]) {
+    const [taskSid, gemstonePrice] = details;
+    this._taskUser.submitPrice(taskSid, gemstonePrice);
+  }
+
 }
