@@ -1,6 +1,6 @@
 export interface Task {
     assignmentStatus: string;
-    attributes: [string, any][];
+    attributes: any; 
     dateCreated: Date;
     dateUpdated: Date;
     workerSid: string;

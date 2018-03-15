@@ -11,13 +11,15 @@ export class UserTaskspaceComponent implements OnInit {
   public user: TaskUser;
 
   constructor(
-    private _taskUser: TaskUserService
+    private _taskUser: TaskUserService,
   ) { }
 
   ngOnInit() {
     this._taskUser
       .updateUser_
-      .subscribe(user => this.user = user);
+      .subscribe(user => {
+        this.user = user
+      });
   }
 
   login(userId: number): void {

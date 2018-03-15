@@ -1,1 +1,2 @@
-export const Twilio = window['Twilio'];
+import './twilio-sdk';
+export const Twilio: any = window['Twilio'];

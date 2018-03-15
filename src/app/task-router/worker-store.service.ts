@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { WorkerEventsService } from './worker-events.service';
 
 @Injectable()
 export class WorkerStoreService {
 
   private _workers: any[] = [];
-  constructor(
-    private _workerEvents: WorkerEventsService
-  ) { 
+  constructor() { 
   }
 
 
@@ -16,7 +13,7 @@ export class WorkerStoreService {
     return worker;
   }
 
-  upsertWorker(worker: any, storeWorkers: any[]): any[] {
+  upsertWorker(worker: any): any[] {
     const result = 
       this._workers.filter(wkr => wkr.workerSid === worker.workerSid);
     

@@ -1,0 +1,10 @@
+<main>
+  <button (click)="login()">Fetch Tasks for Workspace</button>
+  <h2>WORKSPACE_TASKS</h2>
+  <section class="tasks">
+    <div *ngFor="let task of workspaceState.tasks">
+      {{task.attributes.gemstone.hexcolor}}
+      {{task.assignmentStatus}}
+    </div>
+  </section>
+</main>

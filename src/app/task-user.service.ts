@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs/subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { WorkspaceService } from './workspace.service';
 import { TaskUser } from './task-user';
 import { Reservation } from './task-router/reservation';
 import { WorkerActionService } from './task-router/worker-action.service';
 import { WorkerEventsService } from './task-router/worker-events.service';
 import { _ } from 'lodash';
 
-const loginEndpoint = 'http://ad9090c1.ngrok.io/api/users/login';
+const loginEndpoint = 'http://1620dbc2.ngrok.io/api/users/login';
 const idleSid = 'WA79d87ae3e39b117beb1e98cffae2d422';
 const offlineSid = 'WAb03bda1830874190af3b884ec29712b5';
 
@@ -26,7 +27,8 @@ export class TaskUserService {
   constructor(
     private _http: HttpClient,
     private _workerEvents: WorkerEventsService,
-    private _workerAction: WorkerActionService
+    private _workerAction: WorkerActionService,
+    private _workspaceService: WorkspaceService
   ) {
     this.updateUser_.next(this.currentUser);
     this.activateSubscriptions();
@@ -45,6 +47,7 @@ export class TaskUserService {
           isLoggedIn: false
         } as TaskUser
 
+        this._workspaceService.loginWorkspace();
         this._workerAction.initializeWorker(response.capability, idleSid, offlineSid);
         this.currentUser = newCurrentUser;
         this.updateUser_.next(newCurrentUser);
@@ -66,12 +69,14 @@ export class TaskUserService {
     this._workerEvents
       .reservationCreated_
       .subscribe(rsrv => {
+        this._workspaceService.loginWorkspace();
         this.updatePendingReservation(rsrv);
       });
 
     this._workerEvents
       .reservationRejected_
       .subscribe(rsrv => {
+        this._workspaceService.loginWorkspace();
         this.updateRejectedReservation(rsrv);
       });
   }

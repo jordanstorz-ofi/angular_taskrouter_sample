@@ -5,6 +5,8 @@ import { WorkerStoreService } from './worker-store.service';
 import { WorkerEventsService } from './worker-events.service';
 import { TwilioService } from './twilio.service';
 
+import { WorkspaceActionService } from './workspace-action.service';
+
 @NgModule({
   imports: [
     CommonModule
@@ -14,7 +16,8 @@ import { TwilioService } from './twilio.service';
     WorkerActionService,
     WorkerStoreService,
     WorkerEventsService,
-    TwilioService
+    TwilioService,
+    WorkspaceActionService
   ]
 })
 export class TaskRouterModule { }
