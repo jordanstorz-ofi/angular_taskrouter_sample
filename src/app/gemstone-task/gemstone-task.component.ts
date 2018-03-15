@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Reservation } from '../task-router/reservation';
 
 @Component({
@@ -9,9 +9,16 @@ import { Reservation } from '../task-router/reservation';
 export class GemstoneTaskComponent implements OnInit {
 
   @Input() reservation: Reservation;
+  @Output() acceptReservation: EventEmitter<Boolean> = 
+    new EventEmitter<Boolean>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitAcceptReservation() {
+    this.acceptReservation.emit(true);
   }
 
 }

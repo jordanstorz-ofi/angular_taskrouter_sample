@@ -12,6 +12,7 @@
   <main *ngIf="user && user.isLoggedIn">
     <app-gemstone-task 
      *ngIf="user.pendingReservation" 
-     [reservation]="user.pendingReservation"></app-gemstone-task>
+     [reservation]="user.pendingReservation"
+     (acceptReservation)="acceptReservation()"></app-gemstone-task>
   </main>
 </div>

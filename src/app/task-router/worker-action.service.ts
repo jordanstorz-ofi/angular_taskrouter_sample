@@ -22,7 +22,17 @@ export class WorkerActionService {
     );
 
     this._workerStore.upsertWorker(worker);
+    this.fetchReservations(worker.workerSid);
     this._workerEvents.initializeWorkerStreams(worker);
+  }
+
+  fetchReservations(workerSid: string): void {
+    const worker = this._workerStore.findWorkerBySid(workerSid);
+
+    worker.fetchReservations((error, response) => {
+      const reservations = response.data;
+      reservations.forEach(r => this._workerEvents.emitFetchedReservation(r));
+    });
   }
 
   exitWorker(workerSid: string): void {

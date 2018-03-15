@@ -11,10 +11,10 @@ import { Task } from './task';
 export class WorkerEventsService {
 
   public workerReady_: Subject<TRWorker> = new Subject<TRWorker>();
-  workerActivityUpdated_: Subject<TRWorker> = new Subject<TRWorker>();
-  reservationCreated_: Subject<Reservation> = new Subject<Reservation>();
-  reservationRejected_: Subject<Reservation> = new Subject<Reservation>();
-  reservationAccepted_: Subject<Reservation> = new Subject<Reservation>();
+  public workerActivityUpdated_: Subject<TRWorker> = new Subject<TRWorker>();
+  public reservationCreated_: Subject<Reservation> = new Subject<Reservation>();
+  public reservationRejected_: Subject<Reservation> = new Subject<Reservation>();
+  public reservationAccepted_: Subject<Reservation> = new Subject<Reservation>();
 
   constructor() { }
 
@@ -43,6 +43,15 @@ export class WorkerEventsService {
       const reservation = Mapping.mapReservation(webReservation);
       this.reservationAccepted_.next(reservation);
     });
+  }
+
+  emitFetchedReservation(webReservation: any): void {
+    const reservation = Mapping.mapReservation(webReservation);
+    switch (reservation.reservationStatus) {
+      case 'pending': this.reservationCreated_.next(reservation); break;
+      case 'rejected': break;
+      case 'accepted': this.reservationAccepted_.next(reservation); break;
+    };
   }
 
 }

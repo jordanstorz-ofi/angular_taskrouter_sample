@@ -30,4 +30,8 @@ export class UserTaskspaceComponent implements OnInit {
     this._taskUser.logout(this.user.workerSid);
   }
 
+  acceptReservation() {
+    this._taskUser.acceptReservation(this.user.workerSid);
+  }
+
 }

@@ -79,6 +79,13 @@ export class TaskUserService {
         this._workspaceService.loginWorkspace();
         this.updateRejectedReservation(rsrv);
       });
+    
+    this._workerEvents
+      .reservationAccepted_
+      .subscribe(rsrv => {
+        this._workspaceService.loginWorkspace();
+        this.updatePendingReservation(rsrv);
+      });
   }
 
   updateIsLoggedIn(loggedIn) {
@@ -98,5 +105,9 @@ export class TaskUserService {
       }
       this.updateUser_.next(this.currentUser);
     }
+  }
+
+  acceptReservation(workerSid: string) {
+    this._workerAction.acceptCurrentReservation(workerSid);
   }
 }
