@@ -27,9 +27,6 @@ export class WorkerActionService {
 
   exitWorker(workerSid: string): void {
     const worker = this._workerStore.findWorkerBySid(workerSid);
-    console.log('worker for fetching reservations');
-    console.log(worker);
-    
     
     worker.fetchReservations((error, response) => {
       const responseReservations = response.data;
@@ -40,6 +37,20 @@ export class WorkerActionService {
         activeReservation.reject(offlineSid);
       } else {
         worker.update('ActivitySid', offlineSid);
+      }
+    });
+  }
+
+  acceptCurrentReservation(workerSid: string): void {
+    const worker = this._workerStore.findWorkerBySid(workerSid);
+
+    worker.fetchReservations((error, response) => {
+      const responseReservations = response.data;
+      const pendingReservation = 
+        responseReservations.find(res => res.reservationStatus === 'pending');
+
+      if (pendingReservation) {
+        pendingReservation.accept();
       }
     });
   }

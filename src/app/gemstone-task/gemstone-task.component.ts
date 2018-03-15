@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../task-router/task';
+import { Reservation } from '../task-router/reservation';
 
 @Component({
   selector: 'app-gemstone-task',
@@ -8,7 +8,7 @@ import { Task } from '../task-router/task';
 })
 export class GemstoneTaskComponent implements OnInit {
 
-  @Input() task: Task;
+  @Input() reservation: Reservation;
   constructor() { }
 
   ngOnInit() {

@@ -10,6 +10,8 @@
     <button (click)="logout()">Sign out</button>
   </header>
   <main *ngIf="user && user.isLoggedIn">
-    <app-gemstone-task *ngIf="user.pendingReservation" [task]="user.pendingReservation.task"></app-gemstone-task>
+    <app-gemstone-task 
+     *ngIf="user.pendingReservation" 
+     [reservation]="user.pendingReservation"></app-gemstone-task>
   </main>
 </div>

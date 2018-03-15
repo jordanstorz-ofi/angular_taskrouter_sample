@@ -1,9 +1,10 @@
 <main>
-  <button (click)="login()">Fetch Tasks for Workspace</button>
   <h2>WORKSPACE_TASKS</h2>
+  <button (click)="login()">refresh tasks</button>
   <section class="tasks">
-    <div *ngFor="let task of workspaceState.tasks">
-      {{task.attributes.gemstone.hexcolor}}
+    <div id="task-view" *ngFor="let task of workspaceState.tasks">
+      <div class="task-color" 
+       [style.background-color]="task.attributes.gemstone.hexcolor"></div>
       {{task.assignmentStatus}}
     </div>
   </section>

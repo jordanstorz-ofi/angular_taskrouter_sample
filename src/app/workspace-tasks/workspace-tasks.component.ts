@@ -18,6 +18,8 @@ export class WorkspaceTasksComponent implements OnInit {
     this._workspaceService
       .newState_
       .subscribe(state => this.workspaceState = state);
+
+    this.login();
   }
 
   login(): void {

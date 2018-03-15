@@ -14,6 +14,7 @@ export class WorkerEventsService {
   workerActivityUpdated_: Subject<TRWorker> = new Subject<TRWorker>();
   reservationCreated_: Subject<Reservation> = new Subject<Reservation>();
   reservationRejected_: Subject<Reservation> = new Subject<Reservation>();
+  reservationAccepted_: Subject<Reservation> = new Subject<Reservation>();
 
   constructor() { }
 
@@ -36,6 +37,11 @@ export class WorkerEventsService {
     worker.on('reservation.rejected', webReservation => {
       const reservation = Mapping.mapReservation(webReservation);
       this.reservationRejected_.next(reservation);
+    });
+
+    worker.on('reservation.accepted', webReservation => {
+      const reservation = Mapping.mapReservation(webReservation);
+      this.reservationAccepted_.next(reservation);
     });
   }
 

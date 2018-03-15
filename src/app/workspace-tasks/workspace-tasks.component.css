@@ -2,3 +2,23 @@ main {
     padding: 14px;
     padding-left: 33px;
 }
+
+section.tasks {
+    margin-top: 22px;
+}
+
+div#task-view {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+div#task-view * {
+    margin-right: 22px;
+}
+
+div.task-color {
+    height: 22px;
+    width: 22px;
+    border-radius: 50px;
+}
