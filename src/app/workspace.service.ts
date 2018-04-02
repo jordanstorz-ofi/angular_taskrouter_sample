@@ -8,7 +8,7 @@ import { Gemstone } from './gemstone';
 import { TaskAttributes } from './task-attributes';
 import { clone } from 'lodash';
 
-const endpoint = 'http://1620dbc2.ngrok.io/api/workspaces/login';
+const endpoint = 'http://42f354ba.ngrok.io/api/workspaces/login';
 
 @Injectable()
 export class WorkspaceService {
@@ -29,7 +29,7 @@ export class WorkspaceService {
   }
 
   loginWorkspace(): void {
-    const requestUrl = 'http://1620dbc2.ngrok.io/api/tasks';
+    const requestUrl = 'http://42f354ba.ngrok.io/api/tasks';
     this._http.get<any>(requestUrl)
       .subscribe(response => {
         const tasks = response.map(t => {

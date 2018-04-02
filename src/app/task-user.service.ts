@@ -9,7 +9,7 @@ import { WorkerActionService } from './task-router/worker-action.service';
 import { WorkerEventsService } from './task-router/worker-events.service';
 import { _ } from 'lodash';
 
-const loginEndpoint = 'http://1620dbc2.ngrok.io/api/users/login';
+const loginEndpoint = 'http://42f354ba.ngrok.io/api/users/login';
 const idleSid = 'WA79d87ae3e39b117beb1e98cffae2d422';
 const offlineSid = 'WAb03bda1830874190af3b884ec29712b5';
 
@@ -93,12 +93,15 @@ export class TaskUserService {
   }
 
   updatePendingReservation(reservation: Reservation) {
-    this.currentUser.pendingReservation = reservation;
-    this.updateUser_.next(this.currentUser);
+    if (reservation.workerSid === this.currentUser.workerSid) {
+      this.currentUser.pendingReservation = reservation;
+      this.updateUser_.next(this.currentUser);
+    }
+
   }
 
   updateRejectedReservation(reservation: Reservation) {
-    if (this.currentUser.isLoggedIn) {
+    if (this.currentUser.isLoggedIn && reservation.workerSid === this.currentUser.workerSid) {
       const currentRes = this.currentUser.pendingReservation;
       if (currentRes && currentRes.reservationSid === reservation.reservationSid) {
         this.currentUser.pendingReservation = <Reservation> {};
@@ -113,7 +116,7 @@ export class TaskUserService {
 
   submitPrice(taskSid: string, gemstoneValue: number) {
     console.log('attempting request')
-    const requestUrl = 'http://1620dbc2.ngrok.io/api/tasks';
+    const requestUrl = 'http://42f354ba.ngrok.io/api/tasks';
     const requestBody = {
       TaskSid: taskSid,
       GemstoneValue: gemstoneValue
